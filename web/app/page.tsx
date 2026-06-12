@@ -14,8 +14,11 @@ export default function Home() {
 
       <Panel className="flex flex-col gap-4">
         <ButtonLink href="/join">Unirse a una sala</ButtonLink>
+        <ButtonLink href="/play" variant="secondary">
+          Jugar demo offline
+        </ButtonLink>
         <p className="text-center text-sm text-muted">
-          No necesitas cuenta para mirar la partida.
+          Únete con un código, o prueba sin sala desde el navegador.
         </p>
       </Panel>
     </GlowShell>
