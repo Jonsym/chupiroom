@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/*
+ * ChupiRoom web — dark, cinematic, premium. Mirrors the mobile palette
+ * (constants/theme.ts): deep near-black background + soft off-white accent
+ * (#E0DDEE). No neon — the accent carries every highlight and primary action.
+ * These tokens generate the Tailwind utilities (bg-surface, text-accent, …).
+ */
+@theme {
+  --color-background: #101111;
+  --color-surface: #181a1b;
+  --color-surface-elevated: #212325;
+  --color-accent: #e0ddee;
+  --color-accent-soft: #b8b5c8;
+  --color-muted: #8c8e93;
+  --color-border: rgba(224, 221, 238, 0.1);
+  --color-danger: #e06c75;
+
+  --radius-pill: 999px;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-accent);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Cinematic dark backdrop with a soft radial glow behind hero content. */
+.cr-glow {
+  background:
+    radial-gradient(60% 45% at 50% 0%, rgba(224, 221, 238, 0.08), transparent 70%),
+    linear-gradient(180deg, #171819 0%, #0e0f10 100%);
+}
+
+/* Card transition: each new synced card slides up + fades in (passive, viewers
+   never control the match — this is purely visual on snapshot changes). */
+@keyframes cr-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cr-card-in {
+  animation: cr-card-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cr-card-in {
+    animation: none;
+  }
+}
